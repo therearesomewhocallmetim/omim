@@ -1,23 +1,48 @@
-# Configuration file for clang-format, based on docs/CPP_STYLE.md.
-
----
 BasedOnStyle: Google
-IndentWidth: 2
+ColumnLimit: 120 # Fits GitHub pull-request review width.
+BinPackParameters: false  # Allow either all method's parameters on one line or one parameter per line, no packing.
 
----
 Language: Cpp
-AccessModifierOffset: -2
-AllowShortBlocksOnASingleLine: false
-AllowShortCaseLabelsOnASingleLine: true
-AllowShortFunctionsOnASingleLine: true
+Standard: Cpp11
+
+
+
+
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: false
+AlwaysBreakTemplateDeclarations: true
+
+# BreakBeforeBraces: Custom
 BreakBeforeBraces: Allman
-BreakConstructorInitializersBeforeComma: true
-ColumnLimit: 100
-ConstructorInitializerIndentWidth: 2
+
+#BraceWrapping:
+#    AfterNamespace: true
+#    AfterControlStatement: true
+#    AfterEnum: true
+#    AfterFunction: true
+#    AfterStruct: true
+#    AfterUnion: true
+#    BeforeCatch: true
+#    BeforeElse: true
+#    IndentBraces: false
+
+ReflowComments: false
+SpaceBeforeParens: ControlStatements
+SpacesInAngles: false
+
+
+
+AlwaysBreakBeforeMultilineStrings: false
+BreakStringLiterals: false
+
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+
+
+# Force pointers to the type for C++.
 DerivePointerAlignment: false
-IndentCaseLabels: false
-NamespaceIndentation: None
 PointerAlignment: Middle
-Standard: Cpp11
+
+NamespaceIndentation: All
+IndentWidth: 2
+UseTab: Never
