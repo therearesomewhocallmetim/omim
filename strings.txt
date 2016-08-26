@@ -19403,7 +19403,7 @@
     sk = Testujeme navigáciu pre cyklistov na novú sezónu. Vyskúšajte svoju obľúbenú cyklotrasu s aplikáciou MAPS.ME a podeľte sa s nami o svoj názor.
 
   [rate_gp]
-    comment = Rate in Google Play (Android only)
+    comment = Rate on Google Play (Android only)
     tags = android
     en = Rate on Google Play
     ru = Оценить в Google Play
@@ -19459,6 +19459,3 @@
   [something_is_not_working]
     en = Something is not working
     ru = Что-то не работает
-
-
-
