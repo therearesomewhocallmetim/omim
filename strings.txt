@@ -19458,3 +19458,13 @@
     comment = "Report a bug" -> "Generaal Feedback" -> "Something is not working"
     en = Something is not working
     ru = Что-то не работает
+
+  [accept]
+    comment = "For the first routing"
+    en = Accept
+    ru = Принять
+
+  [decline]
+    comment = "For the first routing"
+    en = Decline
+    ru = Отклонить
