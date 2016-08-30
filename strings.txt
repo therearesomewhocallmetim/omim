@@ -19431,10 +19431,8 @@
   [about_description]
     comment = About short text (below logo)
     tags = ios, android
-    en = Joined efforts of Mail.Ru Group and OpenStreetMap make the most useful application for travelers!
-    ru = Объединив усилия Mail.Ru Group и данные OpenStreetMap, мы создаем незаменимое приложение для путешествий.
-    de = Gemeinsame Bemühungen der Mail.Ru-Gruppe und OpenStreetMap machen die nützlichste Anwendung für Reisende!
-    pl = Najbardziej użyteczna aplikacja dla podróżników, powstała przy udziale zespołów Mail.Ru i OpenStreetMap.
+    en = MAPS.ME is an essential offline application for travelling. MAPS.ME is based on OpenStreetMap data and allows editing it.
+    ru = MAPS.ME — незаменимое приложение для путешествий, работающее без подключения к интернету. MAPS.ME использует данные OpenStreetMap и позволяет редактировать и улучшать их.
 
   [blog]
     comment = Text in menu
@@ -19445,7 +19443,7 @@
   [allow_statistics_hint]
     comment = Hint near allow statictics checkbox
     tags = ios,android
-    en = Collecting usage statistics helps us to improve the app.
+    en = Collecting usage statistics helps us improve the app.
     ru = Сбор статистики помогает нам совершенствовать приложение.
 
   [general_settings]
@@ -19457,5 +19455,6 @@
     ru = Дата %d
 
   [something_is_not_working]
+    comment = "Report a bug" -> "Generaal Feedback" -> "Something is not working"
     en = Something is not working
     ru = Что-то не работает
