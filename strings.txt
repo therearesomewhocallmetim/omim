@@ -19432,7 +19432,7 @@
     comment = About short text (below logo)
     tags = ios, android
     en = MAPS.ME is an essential offline application for travelling. MAPS.ME is based on OpenStreetMap data and allows editing it.
-    ru = MAPS.ME — незаменимое приложение для путешествий, работающее без подключения к интернету. MAPS.ME использует данные OpenStreetMap и позволяет редактировать и улучшать их.
+    ru = MAPS.ME — незаменимое приложение для путешествий, работающее без подключения к интернету. MAPS.ME использует данные OpenStreetMap и позволяет их улучшать.
 
   [blog]
     comment = Text in menu
@@ -19460,11 +19460,11 @@
     ru = Что-то не работает
 
   [accept]
-    comment = "For the first routing"
+    comment = For the first routing
     en = Accept
     ru = Принять
 
   [decline]
-    comment = "For the first routing"
+    comment = For the first routing
     en = Decline
     ru = Отклонить
