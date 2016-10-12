@@ -39,11 +39,9 @@ set(
   settings.hpp
 )
 
-
-if(${PLATFORM_IPHONE})
-  set(
+if (${PLATFORM_IPHONE})
+  append(
     SRC
-    ${SRC}
     http_thread_apple.h
     http_thread_apple.mm
     http_client_apple.mm
@@ -52,17 +50,15 @@ if(${PLATFORM_IPHONE})
     platform_unix_impl.hpp
   )
 elseif(${PLATFORM_ANDROID})
-  set(
+  append(
     SRC
-    ${SRC}
     platform_android.cpp
     platform_unix_impl.cpp
     platform_unix_impl.hpp
   )
 else() # neither iPhone nor Android
-  set(
+  append(
     SRC
-    ${SRC}
     location_service.cpp
     location_service.hpp
     platform_qt.cpp
@@ -71,9 +67,8 @@ else() # neither iPhone nor Android
   )
 
   if (${PLATFORM_WIN})
-    set(
+    append(
       SRC
-      ${SRC}
       http_client_curl.cpp
       http_thread_qt.cpp
       http_thread_qt.hpp
@@ -81,9 +76,8 @@ else() # neither iPhone nor Android
       wifi_info_windows.cpp
     )
   elseif(${PLATFORM_MAC})
-    set(
+    append(
       SRC
-      ${SRC}
       apple_location_service.mm
       http_client_apple.mm
       http_thread_apple.h
@@ -93,9 +87,8 @@ else() # neither iPhone nor Android
       platform_unix_impl.hpp
     )
   elseif(${PLATFORM_LINUX})
-    set(
+    append(
       SRC
-      ${SRC}
       http_client_curl.cpp
       http_thread_qt.cpp
       http_thread_qt.hpp

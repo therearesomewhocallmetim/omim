@@ -1,10 +1,5 @@
 include_directories(${OMIM_ROOT}/3party/protobuf/src)
 
-add_compile_options(
-  "-Wall"
-  "-std=c++11"
-)
-
 set(
   SRC
   altitude_loader.cpp

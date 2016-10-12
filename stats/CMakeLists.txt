@@ -11,40 +11,34 @@ set(
 )
 
 if (${PLATFORM_WIN})
-  set(
+  append(
     SRC
-    ${SRC}
     ${OMIM_ROOT}/3party/Alohalytics/src/windows/file_manager_windows_impl.cc
   )
 else()
-  set(
+  append(
     SRC
-    ${SRC}
     ${OMIM_ROOT}/3party/Alohalytics/src/posix/file_manager_posix_impl.cc
   )
 endif()
 
 if (${PLATFORM_IPHONE} OR ${PLATFORM_MAC})
-  set(
+  append(
     SRC
-    ${SRC}
     ${OMIM_ROOT}/3party/Alohalytics/src/alohalytics_objc.h
     ${OMIM_ROOT}/3party/Alohalytics/src/apple/http_client_apple.mm
     ${OMIM_ROOT}/3party/Alohalytics/src/apple/alohalytics_objc.mm
   )
 elseif(${PLATFORM_LINUX} OR ${PLATFORM_WIN})
-  set(
+  append(
     SRC
-    ${SRC}
     ${OMIM_ROOT}/3party/Alohalytics/src/posix/http_client_curl.cc
   )
 elseif(${PLATFORM_ANDROID})
-  set(
+  append(
     SRC
-    ${SRC}
     ${OMIM_ROOT}/3party/Alohalytics/src/android/jni/jni_alohalytics.cc
   )
-
 endif()
 
 add_library(stats_client ${SRC})

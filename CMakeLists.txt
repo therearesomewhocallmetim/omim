@@ -74,6 +74,11 @@ function(omim_set_platform_var PLATFORM_VAR pattern)
   endif()
 endfunction()
 
+function(append var)
+  message("${var} is ${${var}}")
+  set(${var} ${${var}} ${ARGN} PARENT_SCOPE)
+endfunction()
+
 omim_set_platform_var(PLATFORM_IPHONE "iphone-.*")
 omim_set_platform_var(PLATFORM_ANDROID "android-.*")
 omim_set_platform_var(PLATFORM_MAC "macx-.*" ${APPLE})

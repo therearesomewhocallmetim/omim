@@ -1,8 +1,3 @@
-add_compile_options(
-  "-Wall"
-  "-std=c++11"
-)
-
 set(
   SRC
   algos.hpp
