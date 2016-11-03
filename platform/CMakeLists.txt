@@ -1,3 +1,5 @@
+project(platform)
+
 include_directories(${OMIM_ROOT}/3party/jansson/src ${OMIM_ROOT}/platform)
 
 set(
