@@ -1,3 +1,5 @@
+project(stats_client)
+
 include_directories(${OMIM_ROOT} ${OMIM_ROOT}/3party/Alohalytics/src)
 
 set(
@@ -47,8 +49,8 @@ elseif(${PLATFORM_ANDROID})
 
 endif()
 
-add_library(stats_client ${SRC})
+add_library(${PROJECT_NAME} ${SRC})
 
 if (${PLATFORM_IPHONE} OR ${PLATFORM_MAC})
-  target_compile_options(stats_client PUBLIC "-fobjc-arc")
+  target_compile_options(${PROJECT_NAME} PUBLIC "-fobjc-arc")
 endif()

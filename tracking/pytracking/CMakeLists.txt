@@ -1,5 +1,11 @@
 project(pytracking)
 
+if (NOT PYBINDINGS)
+  message("Skipping " + ${PROJECT_NAME} + " because the PYBINDINGS variale is not set or is set to FALSE")
+  return()
+endif()
+
+
 set(
   SRC
   bindings.cpp
