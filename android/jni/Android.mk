@@ -13,16 +13,18 @@ endif
 # List all static libraries which are built using our own scripts in tools/android #
 ####################################################################################
 
-MY_PREBUILT_LIBS_PATH := ../../../omim-android-$(OMIM_CONFIG)-$(TARGET_ARCH_ABI)/out/$(OMIM_CONFIG)
+MY_PREBUILT_LIBS_PATH := ../../../omim-android-$(OMIM_CONFIG)-$(TARGET_ARCH_ABI)
 
 # Avoid clean errors due to missing external static libs
 ifneq ($(MAKECMDGOALS),clean)
 
 define add_prebuild_static_lib
+#    @echo >>> add_prebuilt_static_lib:, clear_vars: $(CLEAR_VARS); local_module: $1
   include $(CLEAR_VARS)
   LOCAL_MODULE := $1
   LOCAL_SRC_FILES := $(MY_PREBUILT_LIBS_PATH)/lib$1.a
   include $(PREBUILT_STATIC_LIBRARY)
+#  @echo >>> prebult_static_library: $(PREBULT_STATIC_LIBRARY)
 endef
 
 prebuild_static_libs := map tracking traffic drape_frontend routing search storage indexer drape platform editor partners_api geometry coding base opening_hours
