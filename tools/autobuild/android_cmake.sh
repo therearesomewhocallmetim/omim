@@ -11,7 +11,7 @@ if [[ $# < 1 ]]; then
 fi
 CONFIGURATION="$1"
 
-source "$MY_PATH/build_cmake.sh"
+source "$MY_PATH/build_functions.sh"
 source "$MY_PATH/ndk_helper.sh"
 
 MKSPEC="$MY_PATH/../mkspecs/android-clang"
@@ -34,17 +34,23 @@ fi
 
 
 GCC_VERSION=4.8
-CLANG_VERSION=3.6
+CLANG_VERSION=3.9
 ANDROID_PLATFORM=android-15
 
 #MAKEFILE_GENERATOR = UNIX
-QMAKE_COMPILER=$NDK_ROOT/toolchains/llvm-$CLANG_VERSION/prebuilt/$NDK_HOST/bin/clang
+#QMAKE_COMPILER=$NDK_ROOT/toolchains/llvm-3.6/prebuilt/$NDK_HOST/bin/clang # for 12
+#QMAKE_COMPILER=$NDK_ROOT/toolchains/llvm/prebuilt/$NDK_HOST/bin/clang # for 10
+QMAKE_COMPILER=$NDK_ROOT/toolchains/llvm/prebuilt/$NDK_HOST/bin/clang #for 11
 QMAKE_CC=$QMAKE_COMPILER
-QMAKE_CXX=$NDK_ROOT/toolchains/llvm-$CLANG_VERSION/prebuilt/$NDK_HOST/bin/clang++
+#QMAKE_CXX=$NDK_ROOT/toolchains/llvm-3.6/prebuilt/$NDK_HOST/bin/clang++
+QMAKE_CXX="$QMAKE_CC++"
 QMAKE_LINK_C=$QMAKE_CC
 QMAKE_LINK_C_SHLIB=$QMAKE_CC
 QMAKE_LINK=$QMAKE_CXX
 QMAKE_LINK_SHLIB=$QMAKE_CXX
+
+export CC=$QMAKE_CC
+export CXX=$QMAKE_CXX
 
 
 #QMAKE_CFLAGS_RELEASE   *= -O3 -g -DNDEBUG -DRELEASE -D_RELEASE
@@ -75,6 +81,9 @@ export CMAKE_RANLIB=$AR_FULL_PATH
 
 for abi in "${NDK_ABI_LIST[@]}"; do
   SHADOW_DIR="${SHADOW_DIR_BASE}-${CONFIGURATION}-${abi}"
+  export ARCH="$abi"
   export NDK_ABI="$abi"
-  BuildQt "$SHADOW_DIR" "$MKSPEC" "$QMAKE_PARAMS" 1>&2 || ( echo "ERROR while building $abi config"; exit 1 )
+  echo ">>>> CONFIGURATION: ${CONFIGURATION}"
+    export PLATFORM="android-something"
+  BuildCmake "$SHADOW_DIR" "Release" 1>&2 || ( echo "ERROR while building $abi config"; exit 1 )
 done
