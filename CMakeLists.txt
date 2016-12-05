@@ -61,6 +61,12 @@ endif()
 
 omim_set_platform_var(PLATFORM_LINUX "linux-.*" ${LINUX_DETECTED})
 
+if (PLATFORM_ANDROID)
+  message("~> WE ARE ON ANDROID")
+endif()
+
+
+
 # End of setting the target platform
 
 # Find installed packages
