@@ -315,6 +315,11 @@ android {
     exclude 'lib/x86_64/libcrashlytics-envelope.so'
     exclude 'lib/x86_64/libcrashlytics.so'
   }
+  externalNativeBuild {
+    cmake {
+      path '../CMakeLists.txt'
+    }
+  }
 }
 
 // Tasks needed to compile NDK part
