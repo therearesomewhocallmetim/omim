@@ -2,6 +2,11 @@ cmake_minimum_required(VERSION 3.2)
 
 project(omim C CXX)
 
+
+message("The compiler we are using is: ${CMAKE_CXX_COMPILER_ID}")
+
+
+
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 # Set environment variables

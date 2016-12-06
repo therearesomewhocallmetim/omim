@@ -32,14 +32,15 @@ BuildCmake() {
      "-DCMAKE_SYSTEM_NAME=Android" \
      "-DCMAKE_ANDROID_ARCH_ABI=$ARCH" \
     "-DANDROID_NDK=/Users/Shared/android-ndk-r12b/" \
-#    "-DCMAKE_CXX_FLAGS='std=c++0x -stdlib=libc++")" \
     "-DINCLUDE_DIRECTORIES=/Users/Shared/android-ndk-r12b/sources/cxx-stl/llvm-libc++" \
-     "-DCMAKE_BUILD_TYPE=$BUILD_TYPE" -DCMAKE_OSX_ARCHITECTURES=$ARCH -DNO_TESTS=TRUE -DPLATFORM=$PLATFORM "$MY_PATH/../.."
-
+    ""
+     "-DCMAKE_BUILD_TYPE=$BUILD_TYPE" "-DCMAKE_OSX_ARCHITECTURES=$ARCH" "-DNO_TESTS=TRUE -DPLATFORM=$PLATFORM" "$MY_PATH/../.." \
+     "$MY_PATH/../.."
 #    CC=$CC CXX=$CXX cmake "-DCMAKE_BUILD_TYPE=$BUILD_TYPE" -DCMAKE_OSX_ARCHITECTURES=$ARCH -DNO_TESTS=TRUE -DPLATFORM=$PLATFORM "$MY_PATH/../.."
 #    make clean > /dev/null || true
     make -j \
-    #$(GetCPUCores) \
     VERBOSE=1
   )
 }
+
+#    "-DCMAKE_CXX_FLAGS='std=c++0x -stdlib=libc++")" \
