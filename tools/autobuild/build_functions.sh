@@ -33,9 +33,9 @@ BuildCmake() {
      "-DCMAKE_ANDROID_ARCH_ABI=$ARCH" \
     "-DANDROID_NDK=/Users/Shared/android-ndk-r12b/" \
     "-DINCLUDE_DIRECTORIES=/Users/Shared/android-ndk-r12b/sources/cxx-stl/llvm-libc++" \
-    ""
-     "-DCMAKE_BUILD_TYPE=$BUILD_TYPE" "-DCMAKE_OSX_ARCHITECTURES=$ARCH" "-DNO_TESTS=TRUE -DPLATFORM=$PLATFORM" "$MY_PATH/../.." \
-     "$MY_PATH/../.."
+    "-DCMAKE_CXX_COMPILER=$CXX" \
+    "-DCMAKE_C_COMPILER=$CC" \
+     "-DCMAKE_BUILD_TYPE=$BUILD_TYPE" "-DNO_TESTS=TRUE" "-DPLATFORM=$PLATFORM" "$MY_PATH/../.." \
 #    CC=$CC CXX=$CXX cmake "-DCMAKE_BUILD_TYPE=$BUILD_TYPE" -DCMAKE_OSX_ARCHITECTURES=$ARCH -DNO_TESTS=TRUE -DPLATFORM=$PLATFORM "$MY_PATH/../.."
 #    make clean > /dev/null || true
     make -j \
