@@ -4,6 +4,10 @@ project(omim C CXX)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+if (ANDROID_NDK)
+  set(PLATFORM "android-something")
+endif()
+
 # Set environment variables
 
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
