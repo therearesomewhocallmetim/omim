@@ -68,6 +68,11 @@ omim_set_platform_var(PLATFORM_LINUX "linux-.*" ${LINUX_DETECTED})
 
 if (PLATFORM_ANDROID)
   message("~> WE ARE ON ANDROID")
+  message("Using android, addidng include_dir: ${ANDROID_NDK}/sources/cxx-stl/llvm-libc++")
+  include_directories(
+    ${ANDROID_NDK}/sources/cxx-stl/llvm-libc++/libcxx/src
+    ${ANDROID_NDK}/sources/cxx-stl/gnu-libstdc++/4.9/
+  )
 endif()
 
 
