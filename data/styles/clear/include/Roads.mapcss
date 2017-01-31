@@ -414,7 +414,7 @@ line|z18-[highway=trunk_link][bridge?]::bridgewhite,
 {casing-width: eval(prop("width")+1);}
 
 line|z13-16[highway=motorway][bridge?]::bridgeblack,
-line|z13-16[highway=trunk][bridge?]::bridgeblack
+line|z13-16[highway=trunk][bridge?]::bridgeblack,
 line|z14-16[highway=motorway_link][bridge?]::bridgeblack,
 line|z14-16[highway=trunk_link][bridge?]::bridgeblack,
 {casing-width: eval(prop("width")+0.4);}
@@ -781,7 +781,7 @@ line|z13-[highway=construction],
 line|z13-[highway=proposed]
 {color: @construction;opacity: 1;}
 line|z13-[highway=pedestrian][bridge?]::bridgewhite,
-line|z13-[highway=footway][bridge?]::bridgewhite
+line|z13-[highway=footway][bridge?]::bridgewhite,
 line|z16-[highway=steps][bridge?]::bridgewhite,
 line|z16-[highway=road][bridge?]::bridgewhite,
 line|z16-[highway=service][bridge?]::bridgewhite

@@ -2948,7 +2948,6 @@ cont {
     scale: 18
     symbol {
       name: "car-wash-l"
-      apply_for_type: 1
       priority: 16652
     }
     caption {
@@ -2964,7 +2963,6 @@ cont {
     scale: 19
     symbol {
       name: "car-wash-l"
-      apply_for_type: 1
       priority: 16652
     }
     caption {
@@ -9706,6 +9704,7 @@ cont {
       primary {
         height: 9
         color: 5592405
+        text: "addr:housename"
       }
       secondary {
         height: 10
@@ -9785,6 +9784,7 @@ cont {
       primary {
         height: 9
         color: 5592405
+        text: "addr:housename"
       }
       secondary {
         height: 10
@@ -9870,6 +9870,7 @@ cont {
       primary {
         height: 9
         color: 5592405
+        text: "addr:housename"
       }
       secondary {
         height: 10
@@ -9967,6 +9968,7 @@ cont {
       primary {
         height: 9
         color: 5592405
+        text: "addr:housename"
       }
       secondary {
         height: 10
@@ -10084,6 +10086,7 @@ cont {
         height: 9
         color: 5592405
         offset_y: 8
+        text: "addr:housename"
       }
       secondary {
         height: 11
@@ -72491,7 +72494,6 @@ cont {
     scale: 15
     symbol {
       name: "tourism-m"
-      apply_for_type: 1
       priority: 16831
       min_distance: 36
     }
