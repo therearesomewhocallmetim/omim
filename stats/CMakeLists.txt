@@ -38,7 +38,7 @@ elseif(${PLATFORM_LINUX} OR ${PLATFORM_WIN})
   )
 elseif(${PLATFORM_ANDROID})
   message("JNI_INCLUDE_DIRS IN STATS: ${JNI_INCLUDE_DIRS}")
-  include_directories(JNI_INCLUDE_DIRS)
+  include_directories(${JNI_INCLUDE_DIRS})
   append(
     SRC
     ${OMIM_ROOT}/3party/Alohalytics/src/android/jni/jni_alohalytics.cc
