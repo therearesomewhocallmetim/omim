@@ -103,6 +103,12 @@ if (PLATFORM_LINUX)
   find_package(OpenGL)
 endif()
 
+if (PLATFORM_ANDROID)
+  find_package(JNI REQUIRED)
+  message("Android, ${JNI_INCLUDE_DIRS}")
+endif()
+
+
 find_library(LIBZ NAMES z)
 if (LIBZ STREQUAL "LIBZ-NOTFOUND")
   message(FATAL_ERROR "Failed to find libz library.")
