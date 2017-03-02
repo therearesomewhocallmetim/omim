@@ -24,15 +24,26 @@ BuildQt() {
 
     mkdir -p "$SHADOW_DIR"
     cd "$SHADOW_DIR"
-    echo "Launching qmake..."
+    echo "Launching CMake..."
     # This call is needed to correctly rebuild c++ sources after switching between branches with added or removed source files.
     # Otherwise we get build errors.
-    "$CMAKE" "-DSKIP_TESTS=TRUE" "-DPLATFORM=android-smth" "-DANDROID_ABI=$NDK_ABI" "$MY_PATH/../../"
+    "$CMAKE" \
+     "-DSKIP_TESTS=TRUE" \
+     "-DPLATFORM=android-smth" \
+    "-DANDROID_ABI=$NDK_ABI" \
+    "-DANDROID_NDK=/Users/Shared/android-ndk-r13b/" \
+     "-DCMAKE_TOOLCHAIN_FILE=/Users/Shared/android-ndk-r13b/build/cmake/android.toolchain.cmake" \
+    "-DANDROID_NATIVE_API_LEVEL=23" \
+    "-DANDROID_TOOLCHAIN=clang" \
+    "-DANDROID_STL=system" \
+    "$MY_PATH/../../"
 
+#"-DBOOST_INCLUDEDIR=/usr/local/include" \
+#   "-DBOOST_LIBRARYDIR=/usr/local/lib" \
 
 #     -r CONFIG-=sdk "$QMAKE_PARAMS" -spec "$(StripCygwinPrefix $MKSPEC)" "$(StripCygwinPrefix $MY_PATH)/../../omim.pro"
 #    make clean > /dev/null || true
-    make -j8
+      make   -j8 VERBOSE=1
   )
 }
 
@@ -58,7 +69,7 @@ fi
 
 
 for abi in "${NDK_ABI_LIST[@]}"; do
-  SHADOW_DIR="${SHADOW_DIR_BASE}-${CONFIGURATION}-${abi}"
+  SHADOW_DIR="${SHADOW_DIR_BASE}-${CONFIGURATION}-${abi}/out/${CONFIGURATION}"
   export NDK_ABI="$abi"
   BuildQt "$SHADOW_DIR" "$MKSPEC" "$QMAKE_PARAMS" 1>&2 || ( echo "ERROR while building $abi config"; exit 1 )
 done

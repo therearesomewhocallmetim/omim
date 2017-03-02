@@ -328,6 +328,8 @@ apply plugin: 'base'
 
 project.ext.PARAM_PARALLEL_TASK_COUNT = '-j' + (Runtime.runtime.availableProcessors() + 1)
 project.ext.NDK_BUILD = android.getNdkDirectory().toString() + '/ndk-build'
+project.ext.NDK_TOOLS = android.getNdkDirectory().toString() + "/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64/bin"
+
 if (System.properties['os.name'].toLowerCase().contains('windows'))
   project.ext.NDK_BUILD += ".cmd"
 
@@ -348,7 +350,7 @@ buildTypes.each { type ->
 
 def createCppBuildTask(buildType, arch, suffix) {
   return tasks.create(name: "cppBuild${suffix}", type: Exec, description: "Building ${buildType} version of static C++ libraries. Arch : ${arch}") {
-    def args = ['bash', '../tools/autobuild/android.sh', buildType]
+    def args = ['bash', '../tools/autobuild/cmake-android.sh', buildType]
     if (!arch.isEmpty())
       args += arch
     commandLine args
@@ -357,9 +359,11 @@ def createCppBuildTask(buildType, arch, suffix) {
 
 def createNdkBuildTask(buildType, arch, suffix, flags) {
   return tasks.create(name: "ndkBuild${suffix}", dependsOn: "cppBuild${suffix}", type: Exec, description: "Building ${buildType} version of jni. Arch : ${arch}") {
-    def ndkParams = ([project.ext.NDK_BUILD, project.ext.PARAM_PARALLEL_TASK_COUNT] + flags.split(' ')).flatten()
+    def ndkParams = ([project.ext.NDK_BUILD, "AR=" + project.ext.NDK_TOOLS + "/arm-linux-androideabi-ar", "RANLIB=" + project.ext.NDK_TOOLS + "/arm-linux-androideabi-ranlib", "STRIP=" + project.ext.NDK_TOOLS + "/arm-linux-androideabi-strip", project.ext.PARAM_PARALLEL_TASK_COUNT] + flags.split(' ')).flatten()
     if (!arch.isEmpty())
       ndkParams += "NDK_ABI_TO_BUILD=${arch}"
+
+    println "ARGS ::: " + ndkParams
     commandLine ndkParams
   }
 }

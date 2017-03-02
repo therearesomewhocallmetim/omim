@@ -80,11 +80,22 @@ if (PLATFORM_MAC)
   set(Boost_USE_STATIC_RUNTIME ON)
 endif()
 
-if (PYBINDINGS)
-  find_package(Boost 1.54 REQUIRED COMPONENTS python)
+if (PLATFORM_ANDROID)
+  message("Including directories boost")
+  include_directories(${CMAKE_HOME_DIRECTORY}/3party/boost)
 else()
-  find_package(Boost 1.54)
+    if (PYBINDINGS)
+      find_package(Boost 1.54 REQUIRED COMPONENTS python)
+    else()
+      set(Boost_USE_STATIC_LIBS ON)
+      set(USE_STATIC_BOOST ON)
+      set(Boost_USE_STATIC_RUNTIME ON)
+       set(BOOST_COMPILER gcc)
+      find_package(Boost 1.54)
+      message("root: ${BOOST_ROOT}; ${Boost_INCLUDE_DIR}; ${Boost_LIBRARY_DIR}")
+    endif()
 endif()
+
 
 if (PYBINDINGS)
   find_package(PythonLibs 2.7 REQUIRED)
@@ -104,7 +115,14 @@ if (PLATFORM_LINUX)
 endif()
 
 if (PLATFORM_ANDROID)
-  find_package(JNI REQUIRED)
+  set(CMAKE_SYSTEM_NAME Android)
+  set(CMAKE_SYSTEM_VERSION 1)
+  # Compiler to build for the target
+  # set(CMAKE_C_COMPILER /opt/arm-linux-androideabi-4.8/bin/arm-linux-androideabi-gcc)
+  # set(CMAKE_CXX_COMPILER /opt/arm-linux-androideabi-4.8/bin/arm-linux-androideabi-g++)
+
+
+ # find_package(JNI REQUIRED)
   message("Android, ${JNI_INCLUDE_DIRS}")
 endif()
 
