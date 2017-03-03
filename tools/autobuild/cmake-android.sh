@@ -34,16 +34,18 @@ BuildQt() {
      "-DPLATFORM=android-smth" \
     "-DANDROID_ABI=$NDK_ABI" \
     "-DANDROID_NDK=/Users/Shared/android-ndk-r13b/" \
+    "-DANDROID_TOOLCHAIN=/Users/Shared/toolchain-86" \
      "-DCMAKE_TOOLCHAIN_FILE=/Users/Shared/android-ndk-r13b/build/cmake/android.toolchain.cmake" \
     "-DANDROID_NATIVE_API_LEVEL=23" \
     "-DANDROID_TOOLCHAIN=clang" \
     "-DCMAKE_MAKE_PROGRAM=/Users/Shared/AndroidSdk/cmake/3.6.3155560/bin/ninja" \
-    "-DANDROID_STL=c++_shared" \
+    "-DANDROID_STL=c++_static" \
     "-DANDROID_CPP_FEATURES='rtti exceptions'" \
     "-GAndroid Gradle - Ninja" \
     "$MY_PATH/../../"
 
-#    "-DANDROID_STL=system" \
+    #"-DANDROID_STL=c++_static" \
+    #    "-DANDROID_STL=system" \
 #"-DBOOST_INCLUDEDIR=/usr/local/include" \
 #   "-DBOOST_LIBRARYDIR=/usr/local/lib" \
 

@@ -1,6 +1,6 @@
 NDK_TOOLCHAIN_VERSION := clang
 APP_PLATFORM := android-15
-APP_STL := c++_shared
+APP_STL := c++_static
 
 # libc++-specific issues: -std=c++11" is turned on by default.
 
