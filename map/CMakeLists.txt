@@ -7,8 +7,6 @@ include_directories(
   ${OMIM_ROOT}/3party/glm
 )
 
-append(CMAKE_CXX_FLAGS "-std=c++11")
-
 set(
   SRC
   ../api/src/c/api-client.c
@@ -60,6 +58,8 @@ set(
 )
 
 add_library(${PROJECT_NAME} ${SRC})
+
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
 
 omim_add_test_subdirectory(map_tests)
 omim_add_test_subdirectory(mwm_tests)

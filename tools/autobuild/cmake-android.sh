@@ -22,6 +22,8 @@ BuildQt() {
     MKSPEC="$2"
     QMAKE_PARAMS="$3"
 
+    export PATH=/Users/Shared/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/bin:$PATH
+
     mkdir -p "$SHADOW_DIR"
     cd "$SHADOW_DIR"
     echo "Launching CMake..."
@@ -35,15 +37,23 @@ BuildQt() {
      "-DCMAKE_TOOLCHAIN_FILE=/Users/Shared/android-ndk-r13b/build/cmake/android.toolchain.cmake" \
     "-DANDROID_NATIVE_API_LEVEL=23" \
     "-DANDROID_TOOLCHAIN=clang" \
-    "-DANDROID_STL=system" \
+    "-DCMAKE_MAKE_PROGRAM=/Users/Shared/AndroidSdk/cmake/3.6.3155560/bin/ninja" \
+    "-DANDROID_STL=c++_shared" \
+    "-DANDROID_CPP_FEATURES='rtti exceptions'" \
+    "-GAndroid Gradle - Ninja" \
     "$MY_PATH/../../"
 
+#    "-DANDROID_STL=system" \
 #"-DBOOST_INCLUDEDIR=/usr/local/include" \
 #   "-DBOOST_LIBRARYDIR=/usr/local/lib" \
 
 #     -r CONFIG-=sdk "$QMAKE_PARAMS" -spec "$(StripCygwinPrefix $MKSPEC)" "$(StripCygwinPrefix $MY_PATH)/../../omim.pro"
 #    make clean > /dev/null || true
-      make   -j8 VERBOSE=1
+
+       pwd
+ASFLAGS="-D__ANDROID__" CROSS=i686-linux-android- LDFLAGS="--sysroot=/Users/Shared/android-ndk-r13b/platforms/android-24/arch-x86" ./configure --target=x86-android-gcc --extra-cflags="--sysroot=/Users/Shared/android-ndk-r13b/platforms/android-24/arch-x86" --disable-examples
+
+      /Users/Shared/AndroidSdk/cmake/3.6.3155560/bin/ninja   -j8
   )
 }
 

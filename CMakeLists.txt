@@ -92,7 +92,6 @@ else()
       set(Boost_USE_STATIC_RUNTIME ON)
        set(BOOST_COMPILER gcc)
       find_package(Boost 1.54)
-      message("root: ${BOOST_ROOT}; ${Boost_INCLUDE_DIR}; ${Boost_LIBRARY_DIR}")
     endif()
 endif()
 
@@ -244,6 +243,7 @@ add_subdirectory(3party/minizip)
 add_subdirectory(3party/freetype)
 add_subdirectory(3party/fribidi)
 add_subdirectory(3party/expat)
+
 add_subdirectory(map)
 
 if (PLATFORM_DESKTOP)
@@ -254,6 +254,8 @@ add_compile_options(
   "-Wall"
   "-std=c++11"
 )
+
+
 
 add_subdirectory(3party/stb_image)
 add_subdirectory(3party/sdf_image)
@@ -289,5 +291,6 @@ omim_add_test_subdirectory(qt_tstfrm)
 omim_add_test_subdirectory(3party/gmock)
 
 if (NOT PLATFORM_IPHONE AND NOT PLATFORM_ANDROID AND NOT SKIP_DESKTOP)
+    message("Should build qt")
     add_subdirectory(qt)
 endif()

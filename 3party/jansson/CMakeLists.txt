@@ -2,7 +2,7 @@ project(jansson)
 
 include_directories(src ../../)
 
-append(CMAKE_CXX_FLAGS "-std=c++11")
+#append(CMAKE_CXX_FLAGS "-std=c++11")
 
 
 set(
@@ -29,3 +29,4 @@ set(
 )
 
 add_library(${PROJECT_NAME} ${SRC})
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
