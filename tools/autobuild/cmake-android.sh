@@ -36,7 +36,7 @@ BuildQt() {
     "-DANDROID_NDK=/Users/Shared/android-ndk-r13b/" \
     "-DANDROID_TOOLCHAIN=/Users/Shared/toolchain-86" \
      "-DCMAKE_TOOLCHAIN_FILE=/Users/Shared/android-ndk-r13b/build/cmake/android.toolchain.cmake" \
-    "-DANDROID_NATIVE_API_LEVEL=23" \
+    "-DANDROID_NATIVE_API_LEVEL=15" \
     "-DANDROID_TOOLCHAIN=clang" \
     "-DCMAKE_MAKE_PROGRAM=/Users/Shared/AndroidSdk/cmake/3.6.3155560/bin/ninja" \
     "-DANDROID_STL=c++_static" \
@@ -55,7 +55,7 @@ BuildQt() {
        pwd
 ASFLAGS="-D__ANDROID__" CROSS=i686-linux-android- LDFLAGS="--sysroot=/Users/Shared/android-ndk-r13b/platforms/android-24/arch-x86" ./configure --target=x86-android-gcc --extra-cflags="--sysroot=/Users/Shared/android-ndk-r13b/platforms/android-24/arch-x86" --disable-examples
 
-      /Users/Shared/AndroidSdk/cmake/3.6.3155560/bin/ninja   -j8
+      /Users/Shared/AndroidSdk/cmake/3.6.3155560/bin/ninja   -j8 -v
   )
 }
 

@@ -81,6 +81,21 @@ if (PLATFORM_MAC)
 endif()
 
 if (PLATFORM_ANDROID)
+  add_definitions(
+    -DOMIM_PRODUCTION
+    -DQT_NO_DEBUG
+    -D_RELEASE
+  )
+
+  include_directories(
+#    /Users/Shared/android-ndk-r13b/sources/android/support/include
+#   /Users/Shared/android-ndk-r13b/sources/cxx-stl/gabi++/include
+   /Users/Shared/android-ndk-r13b/sources/cxx-stl/llvm-libc++/include
+#    /Users/t.danshin/Documents/projects/omim-android-production-x86/3party/liboauthcpp
+#    /Users/t.danshin/Documents/projects/omim/3party/glm
+#    /Users/t.danshin/Documents/projects/omim/3party/liboauthcpp
+#    /Users/t.danshin/Documents/projects/omim/tools/mkspecs/android-clang
+  )
   message("Including directories boost")
   include_directories(${CMAKE_HOME_DIRECTORY}/3party/boost)
 else()
